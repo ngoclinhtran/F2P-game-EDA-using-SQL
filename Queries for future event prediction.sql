@@ -4,12 +4,15 @@ WITH fridaytable AS (
 		AVG(CAST(tablea.levels_played AS float)) AS avg_levels_played_per_user, 
 		SUM(tablea.levels_played) AS total_levels_played
 	FROM (SELECT dbo.Assignment.date, 
-				DATENAME(DW, date) AS day_of_the_week, 
-				dbo.Assignment.id, 
-				dbo.Assignment.levels_played
+			DATENAME(DW, date) AS day_of_the_week, 
+			dbo.Assignment.id, 
+			dbo.Assignment.levels_played
 		FROM dbo.Assignment) AS tablea
 	WHERE day_of_the_week = 'Friday'
-	GROUP BY tablea.id),	segmenttable AS (	SELECT id, 
+	GROUP BY tablea.id),
+
+	segmenttable AS (
+	SELECT id, 
 		avg_levels_played_per_user, 
 		total_levels_played,
 		(CASE WHEN avg_levels_played_per_user <=5 THEN 'Group1: 0-5'
@@ -17,7 +20,20 @@ WITH fridaytable AS (
 			WHEN avg_levels_played_per_user >15 AND avg_levels_played_per_user <= 30 THEN 'Group3: 15-30'
 			ELSE 'Group4: 30+'
 		END) AS Segments
-	FROM fridaytable)SELECT segmenttable.Segments,	COUNT(segmenttable.id) AS Segment_DAU,	ROUND(COUNT(*) * 100 / CAST(SUM(COUNT(*)) OVER () AS float),2) AS '%_active_user',	ROUND(AVG(avg_levels_played_per_user),0) AS segment_avg_levels_played_per_user,	ROUND(STDEV(avg_levels_played_per_user),2) AS standard_deviation,	ROUND(AVG(avg_levels_played_per_user) * 1.5,0) AS target_levels_playedFROM segmenttableGROUP BY SegmentsORDER BY Segments;/*Calculate expected target completion rate(calculate the whole target completions of each group and how many users would reach 50% of the target)*/WITH fridaytable AS (
+	FROM fridaytable)
+
+SELECT segmenttable.Segments,
+	COUNT(segmenttable.id) AS Segment_DAU,
+	ROUND(COUNT(*) * 100 / CAST(SUM(COUNT(*)) OVER () AS float),2) AS '%_active_user',
+	ROUND(AVG(avg_levels_played_per_user),0) AS segment_avg_levels_played_per_user,
+	ROUND(STDEV(avg_levels_played_per_user),2) AS standard_deviation,
+	ROUND(AVG(avg_levels_played_per_user) * 1.5,0) AS target_levels_played
+FROM segmenttable
+GROUP BY Segments
+ORDER BY Segments;
+
+/*Calculate expected target completion rate(calculate the whole target completions of each group and how many users would reach 50% of the target)*/
+WITH fridaytable AS (
 	SELECT tablea.id, 
 		AVG(CAST(tablea.levels_played AS float)) AS avg_levels_played, 
 		SUM(tablea.levels_played) AS total_levels_played
