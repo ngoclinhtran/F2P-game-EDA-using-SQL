@@ -21,13 +21,13 @@ The EDA was performed in the dataset to estimate the impact of the in-game event
 ## Tasks for the project
 This project used SQL queries to manipulate the data and Microsoft Power BI to visualize the data. The project was divided into 2 parts: 1. perform EDA in the data based on the KPIs of the industry, 2. based on the data, create user segmentation for sales and events in the most targeted and personalized manner, calculate the target for future in-game event, and estimate the target completion rate.
 
-1. EDA and KPIs analytics (The result can be found in the 'Presentation for EDA and Insights.pdf' file)
+**1. EDA and KPIs analytics** (The result can be found in the 'Presentation for EDA and Insights.pdf' file)
 - Perform EDA for an overview of the data, review data at the first glance
 - Retrieve data and creating charts showing Activity KPIs (DAU, Installs, Levels played), how they change during the in-game event, what trends could be spotted out of the charts, why those KPIs were affected that way, and find insights related to those. Think about the suggestion for better future in-game events.
 - Retrieve data and creating charts showing Revenue KPIs (Revenue, ARPDAU, ARPPU, Conversion rate), how they change during the in-game event, what trends could be spotted out of the charts, why those KPIs were affected that way, and find insights related to those. Think about the suggestion for better future in-game events.
 - To understand how the event connected with the audiences, this project looked at 2 parameters: "age" (days since installation), and "lifetime revenue" (how much revenue they generated since becoming a player. Bucket the categories of "age" and "lifetime revenue" in order to visualize data in a best way. Find insight from these two parameters, which group should the game offer sales, should the game target specific groups for harder/easier events.
 
-2. Create user segmentation, calculate the target for future in-game event, and estimate the target completion rate (The result can be found in the 'Presentation for User Segmentation and Prediction for future event.pdf' file)
+**2. Create user segmentation, calculate the target for future in-game event, and estimate the target completion rate** (The result can be found in the 'Presentation for User Segmentation and Prediction for future event.pdf' file)
 - Group users into segments based on levels played. Calculate the percentage of active users will fall into each segment.
 - There is a future in-game event that will run on Friday. The goal of this event is to encourage players to play more levels by introducing a personalized level win target. This project used 'Activity lift' (the required target compared to segment's average levels played). The 'Activity lift' should be around 50% higher than segment's average. 
 - Calculate the target for each segment.
