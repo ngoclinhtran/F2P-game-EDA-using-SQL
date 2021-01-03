@@ -34,4 +34,6 @@ This project used SQL queries to manipulate the data and Microsoft Power BI to v
 - Based on the levels users typically play (can be observed and calculated from the data), calculate the target completion rate and calculate the number of users who would reach 50% of the target.
 
 ## Notes
-This is a personal project, which was created for the purpose of learning and assessing personal skills. Any comments, feedbacks are more than welcome.
+- There are 2 pdf files created for the purpose of present the result of 2 parts of this project. Each pdf file is a presentation of the result with insights, graphs and charts for data visualzation, and additional questions. 
+- There are 2 sql files, which contain all of the SQL queries used in 2 parts of this project. Each sql file contains queries code and comments to further explain the queries for the readers.
+- This is a personal project, which was created for the purpose of learning and assessing personal skills. Any comments, feedbacks are more than welcome.
